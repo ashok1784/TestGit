@@ -1,0 +1,55 @@
+176|master|190416-11:28:00:43|1 ms|statement|UPDATE addresses SET hjmpTS = ? ,modifiedTS=? WHERE PK = ? AND (sealed IS NULL OR sealed=0)|UPDATE addresses SET hjmpTS = 45 ,modifiedTS='2019-04-16 11:28:00.041' WHERE PK = 8796126150679 AND (sealed IS NULL OR sealed=0)|PreparedStatementImpl:57:DataSourceImplFactory:99:ConnectionImpl:338:ConnectionImpl:630:GenericBMPBean$GenericItemEntityState:1557:GenericBMPBean:313:Transaction:1606:Transaction:1562:Transaction:1518:Transaction:679:Transaction:1215:Transaction:1202:Transaction:1157:Item:2109:Item:2084:ItemModelConverter:1739:ItemModelConverter:836:ModelWrapper:363:ResolvingModelPersister:68:ResolvingModelPersister:53:DefaultModelService:1185:DefaultModelService:744:DefaultModelService:1129:DefaultModelService:721:DefaultModelService:715:DefaultModelService:695:DefaultModelService:643:HPECheckoutFlowOrderPopulator:137:HPECheckoutFlowOrderPopulator:100:HPEDefaultB2BCheckoutFlowFacade:72:CheckoutController:1649:NativeMethodAccessorImpl:-2:NativeMethodAccessorImpl:62:DelegatingMethodAccessorImpl:43:Method:498:InvocableHandlerMethod:205:InvocableHandlerMethod:133:ServletInvocableHandlerMethod:97:RequestMappingHandlerAdapter:849:RequestMappingHandlerAdapter:750:AbstractHandlerMethodAdapter:85:DispatcherServlet:967:DispatcherServlet:901:FrameworkServlet:970:FrameworkServlet:872:HttpServlet:661:FrameworkServlet:846:HttpServlet:742:END
+176|master|190416-11:28:00:52|1 ms|statement|UPDATE numberseries SET currentValue = ? WHERE serieskey = ? AND currentValue = ?|UPDATE numberseries SET currentValue = 23081 WHERE serieskey = 'address_id' AND currentValue = 23080|PreparedStatementImpl:57:DataSourceImplFactory:99:ConnectionImpl:338:ConnectionImpl:630:DefaultSerialNumberDAO:189:DefaultCachingSerialNumberGenerator:188:DefaultCachingSerialNumberGenerator:169:NumberSeriesManager:153:NumberSeriesManager:111:PersistentKeyGenerator:106:HPEServicesAddressModelValidateInterceptor:71:HPEServicesAddressModelValidateInterceptor:1:ModelWrapper:291:ModelWrapper:239:DefaultModelExtractor:57:DefaultModelService:720:DefaultModelService:715:DefaultModelService:695:DefaultModelService:643:HPEDefaultB2BCheckoutFlowFacade:74:CheckoutController:1649:NativeMethodAccessorImpl:-2:NativeMethodAccessorImpl:62:DelegatingMethodAccessorImpl:43:Method:498:InvocableHandlerMethod:205:InvocableHandlerMethod:133:ServletInvocableHandlerMethod:97:RequestMappingHandlerAdapter:849:RequestMappingHandlerAdapter:750:AbstractHandlerMethodAdapter:85:DispatcherServlet:967:DispatcherServlet:901:FrameworkServlet:970:FrameworkServlet:872:HttpServlet:661:FrameworkServlet:846:HttpServlet:742:END
+176|master|190416-11:28:00:55|1 ms|statement|UPDATE numberseries SET currentValue = ? WHERE serieskey = ? AND currentValue = ?|UPDATE numberseries SET currentValue = 23082 WHERE serieskey = 'address_id' AND currentValue = 23081|PreparedStatementImpl:57:DataSourceImplFactory:99:ConnectionImpl:338:ConnectionImpl:630:DefaultSerialNumberDAO:189:DefaultCachingSerialNumberGenerator:188:DefaultCachingSerialNumberGenerator:169:NumberSeriesManager:153:NumberSeriesManager:111:PersistentKeyGenerator:106:HPEServicesAddressModelValidateInterceptor:71:HPEServicesAddressModelValidateInterceptor:1:ModelWrapper:291:ModelWrapper:239:DefaultModelExtractor:57:DefaultModelService:720:DefaultModelService:715:DefaultModelService:695:DefaultModelService:643:HPEDefaultB2BCheckoutFlowFacade:74:CheckoutController:1649:NativeMethodAccessorImpl:-2:NativeMethodAccessorImpl:62:DelegatingMethodAccessorImpl:43:Method:498:InvocableHandlerMethod:205:InvocableHandlerMethod:133:ServletInvocableHandlerMethod:97:RequestMappingHandlerAdapter:849:RequestMappingHandlerAdapter:750:AbstractHandlerMethodAdapter:85:DispatcherServlet:967:DispatcherServlet:901:FrameworkServlet:970:FrameworkServlet:872:HttpServlet:661:FrameworkServlet:846:HttpServlet:742:END
+176|master|190416-11:28:00:58|1 ms|statement|UPDATE numberseries SET currentValue = ? WHERE serieskey = ? AND currentValue = ?|UPDATE numberseries SET currentValue = 17048 WHERE serieskey = 'pk_23' AND currentValue = 17047|PreparedStatementImpl:57:DataSourceImplFactory:99:ConnectionImpl:338:ConnectionImpl:630:DefaultSerialNumberDAO:189:DefaultCachingSerialNumberGenerator:188:DefaultCachingSerialNumberGenerator:169:DefaultPKCounterGenerator:32:PK:88:Item:4141:Item:4113:Item$19:4091:Transaction:1192:Transaction:1157:Item:4086:ComposedType:1337:ComposedType:1257:ItemModelConverter:2258:ItemModelConverter:821:ModelWrapper:363:ResolvingModelPersister:84:ResolvingModelPersister:52:DefaultModelService:1185:DefaultModelService:744:DefaultModelService:1129:DefaultModelService:721:DefaultModelService:715:DefaultModelService:695:DefaultModelService:643:HPEDefaultB2BCheckoutFlowFacade:74:CheckoutController:1649:NativeMethodAccessorImpl:-2:NativeMethodAccessorImpl:62:DelegatingMethodAccessorImpl:43:Method:498:InvocableHandlerMethod:205:InvocableHandlerMethod:133:ServletInvocableHandlerMethod:97:RequestMappingHandlerAdapter:849:RequestMappingHandlerAdapter:750:AbstractHandlerMethodAdapter:85:DispatcherServlet:967:DispatcherServlet:901:FrameworkServlet:970:FrameworkServlet:872:HttpServlet:661:FrameworkServlet:846:HttpServlet:742:END
+
+
+
+INFO   | jvm 1    | main    | 2019/04/16 15:28:00.136 | [m[36mDEBUG [hybrisHTTP32] [16.99.163.171] [PK] PKClass DuplicatePK rawPKBits = 8796651618327 typeCode 23 Counter 17047 counterAndTypeCode=558596119 upperWithoutBit43=0 lowerWithoutBit43=558596119
+INFO   | jvm 1    | main    | 2019/04/16 15:28:00.136 | [m[1;31mERROR [hybrisHTTP32] [16.99.163.171] [CheckoutController] After order placement exception ---checkout.placeOrder.failed---------->>>>de.hybris.platform.servicelayer.exceptions.ModelSavingException: org.springframework.dao.DuplicateKeyException: query; SQL []; [301]: unique constraint violated: Table(ADDRESSES); nested exception is com.sap.db.jdbc.exceptions.SQLIntegrityConstraintViolationExceptionSapDB: [301]: unique constraint violated: Table(ADDRESSES)
+
+import de.hybris.platform.jalo.numberseries.NumberSeriesManager
+
+
+
+series = NumberSeriesManager.getInstance().getAllNumberSeries()
+for (ser in series)
+{
+println ser.getKey() + ' + ' + ser.getCurrentNumber() + '\n' 
+}
+
+
+INSERT_UPDATE Address;owner(Employee.uid)[unique=true];streetname[unique=true];streetnumber[unique=true];postalcode[unique=true];duplicate[unique=true];town;country(isocode);billingAddress;contactAddress;shippingAddress;unloadingAddress;firstname;lastname;email;gender(code);middlename;phone1;title(code);url;company;fax;department
+;test_duplicate2;DrittnÔøΩnggettn;13a;103 25;false;Stockholm;AT;true;true;true;false;Peter;Petersonson;peter.petersonson@gmx.dk;MALE;
+
+$productCatalog=hpeGlobalProductCatalog
+$productCatalogName=hpe Global ProductCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code, $catalogVersion)
+$baseProduct=baseProduct(code,$catalogVersion)
+$taxGroup=Europe1PriceFactory_PTG(code)[default=jp-vat-full]
+$media=@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator]
+$picture=picture(code, $catalogVersion)
+$medias=medias(code, $catalogVersion)
+$galleryImages=galleryImages(qualifier, $catalogVersion)
+$siteResource=jar:com.hpe.initialdata.setup.InitialDataSystemSetup&/hpeinitialdata/import/sampledata/productCatalogs/$productCatalog/images
+$contentCatalog=hpeGlobalContentCatalog
+$prices=europe1Prices[translator=de.hybris.platform.europe1.jalo.impex.Europe1PricesTranslator]
+$approved=approvalstatus(code)[default='approved']
+$unit=unit(code)[default='pieces']
+$lang=en
+
+######################## Product Bundling Sync Job Changes start#################
+$syncJobCode=sync $productCatalog:Staged->Online
+$ruleType=ruleType(code)[default='ANY']
+
+$sourceProductCV=sourceVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default='$productCatalog:Staged']
+$targetProductCV=targetVersion(catalog(id[default=$productCatalog]),version[default='Online'])[unique=true,default='$productCatalog:Online']
+
+INSERT_UPDATE HPEVariantProduct;code[unique=true];$baseProduct;$supercategories;name[lang=$lang];summary[lang=$lang];$approved;description[lang=$lang];$prices;$catalogVersion;
+;879938-B21			;1010026818		;			;HPE ProLiant DL380 Gen10 6130 2P 64GB-R P408i-a 8SFF 2x800W PS Performance Server New		;HPE ProLiant DL380 Gen10 Server Models				;approved	;HPE ProLiant DL380 Gen10 6130 2.1GHz 16-core 2P 64GB-R P408i-a 8SFF 2x800W PS Performance Server		;"pricegroup-us-b2c 1 pieces = 700 USD N";
+
+
+879938-B21 -> Value 10 -> Factor 45
+
+HPE ProLiant DL380 Gen10 6130 2P 64GB-R P408i-a 8SFF 2x800W PS Performance Server
